@@ -5,6 +5,10 @@ on:
       - develop
       - staging
       - main
+  workflow_run:
+    workflows: ["Continuous Integration"]
+    types:
+      - completed
 jobs:
   build-and-push-registry:
     name: Build and Push to Docker Hub
