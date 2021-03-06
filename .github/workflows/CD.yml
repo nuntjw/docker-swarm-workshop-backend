@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - run: echo "${{ secrets.DOCKER_USERNAME }}/${{ github.repository.name }}:${${GITHUB_REF##*/}}"
       - name: Build Image
-        run: docker image build --tag ${{ secrets.DOCKER_USERNAME }}/${{ github.repository.name }}:${${GITHUB_REF##*/}} .
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ github.repository.name }}:${${GITHUB_REF##*/}} .
       - name: Push to Docker Hub
         uses: docker/build-push-action@v1
         with:
