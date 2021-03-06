@@ -1,7 +1,7 @@
 name: Continuous Integration
 on: [push]
 jobs:
-  CI:
+  run-unit-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
